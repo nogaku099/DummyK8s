@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: userapp-pod
+spec:
+  containers:
+  - name: userapp
+    image: yourdockerhubusername/userapp:v1
+    ports:
+    - containerPort: 80
