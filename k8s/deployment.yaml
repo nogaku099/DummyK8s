@@ -15,5 +15,6 @@ spec:
       containers:
       - name: dummyk8s
         image: nogaku/dummyk8s:v1
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
