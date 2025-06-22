@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: userapp-deployment
+  name: dummyk8s-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: userapp
+      app: dummyk8s
   template:
     metadata:
       labels:
-        app: userapp
+        app: dummyk8s
     spec:
       containers:
-      - name: userapp
-        image: yourdockerhubusername/userapp:v1
+      - name: dummyk8s
+        image: nogaku/dummyk8s:v1
         ports:
         - containerPort: 80

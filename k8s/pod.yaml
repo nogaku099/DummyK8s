@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: userapp-pod
+  name: dummyk8s-pod
 spec:
   containers:
-  - name: userapp
-    image: yourdockerhubusername/userapp:v1
+  - name: dummyk8s
+    image: nogaku/dummyk8s:v1
     ports:
     - containerPort: 80
