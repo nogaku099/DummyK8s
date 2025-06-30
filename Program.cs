@@ -4,7 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddCookieTempDataProvider();
 builder.WebHost.UseUrls("http://*:80");
 var app = builder.Build();
-
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
