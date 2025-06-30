@@ -1,13 +1,13 @@
 # pgAdmin ConfigMap
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: pgadmin-config
-  namespace: pg
-data:
-  PGADMIN_DEFAULT_EMAIL: admin@admin.com
-  PGADMIN_DEFAULT_PASSWORD: admin123
-  PGADMIN_PORT: "80"
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: pgadmin-config
+#  namespace: pg
+#data:
+#  PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#  PGADMIN_DEFAULT_PASSWORD: admin123
+#  PGADMIN_PORT: "80"
 
 ---
 # pgAdmin Deployment
@@ -32,9 +32,20 @@ spec:
           ports:
             - containerPort: 80
               name: pgadminport
-          envFrom:
-            - configMapRef:
-                name: pgadmin-config
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: pgadmin-secret
+                  key: PGADMIN_DEFAULT_EMAIL
+            - name: PGADMIN_DEFAULT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgadmin-secret
+                  key: PGADMIN_DEFAULT_PASSWORD
+          #envFrom:
+            #- configMapRef:
+                #name: pgadmin-config
           volumeMounts:
             - name: pgadmin-data
               mountPath: /var/lib/pgadmin
