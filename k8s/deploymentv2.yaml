@@ -1,0 +1,22 @@
+apiVersion: apps/v2
+kind: Deployment
+metadata:
+  name: dummyk8sv2-deployment
+  labels:
+    app: dummyk8sv2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dummyk8sv2
+  template:
+    metadata:
+      labels:
+        app: dummyk8sv2
+    spec:
+      containers:
+        - name: dummyk8sv2
+          image: nogaku/dummyk8s:v2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
