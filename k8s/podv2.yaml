@@ -1,0 +1,10 @@
+apiVersion: v2
+kind: Pod
+metadata:
+  name: dummyk8sv2-pod
+spec:
+  containers:
+  - name: dummyk8sv2
+    image: nogaku/dummyk8s:v2
+    ports:
+    - containerPort: 80
