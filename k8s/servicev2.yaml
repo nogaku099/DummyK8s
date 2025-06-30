@@ -1,0 +1,14 @@
+apiVersion: v2
+kind: Service
+metadata:
+  name: dummyk8sv2-service
+  labels:
+    app: dummyk8sv2
+spec:
+  type: ClusterIP
+  selector:
+    app: dummyk8sv2
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
