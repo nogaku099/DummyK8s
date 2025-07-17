@@ -28,18 +28,10 @@ public class HomeController : Controller
         var user = _db.UserDummy.FirstOrDefault(u => u.Username == username && u.Password == password);
         if (user == null)
         {
-            // Create new user
-            user = new UserDummy
-            {
-                Username = username,
-                Password = password,
-                Name = "Dummy User", // Default name, can be changed,
-                Email = "dummyemail@email.com"
-
-            };
-            _db.UserDummy.Add(user);
-            _db.SaveChanges();
+            TempData["Error"] = "User not found.";
+            return RedirectToAction("Index");
         }
+
         TempData["Username"] = user.Username;
         TempData["Password"] = user.Password;
         TempData["Name"] = user.Name;
@@ -51,6 +43,8 @@ public class HomeController : Controller
     {
         ViewBag.Username = TempData["Username"];
         ViewBag.Password = TempData["Password"];
+        ViewBag.Name = TempData["Name"];
+        ViewBag.Email = TempData["Email"];
         return View();
     }
 }
