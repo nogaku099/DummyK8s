@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: dummyk8s
-    image: nogaku/dummyk8s:v1
+    image: nogaku/dummyk8s:v4
     ports:
     - containerPort: 80
